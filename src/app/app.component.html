@@ -1,24 +1,5 @@
-<nav class="navbar navbar-light bg-light">
-  <div class="container">
-    <div class="row">
-      <div class="col">
-        <ul class="nav">
-          <li class="nav-item">
-            <a routerLink="/shopping-cart" class="nav-link">Shopping Cart</a>
-          </li>
-          <li class="nav-item" ngbDropdown>
-            <div class="nav-link text-primary" ngbDropdownToggle id="dropdownBasic1">Username</div>
-            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                <button class="dropdown-item">My Orders</button>
-                <button class="dropdown-item">Manage Orders</button>
-                <button class="dropdown-item">Manage Products</button>
-                <button class="dropdown-item">Log Out</button>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</nav>
+<bs-navbar></bs-navbar>
 
-<router-outlet></router-outlet>
+<div class="container">
+    <router-outlet></router-outlet>    
+</div>
