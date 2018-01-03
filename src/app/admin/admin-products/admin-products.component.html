@@ -6,21 +6,27 @@
   <input #query type="text" class="form-control" placeholder="search.." (keyup)="filter(query.value)">
 </div>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Price</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let p of filteredProducts">
-      <td>{{ p.title }}</td>
-      <td>{{ p.price }}</td>
-      <td>
-        <a [routerLink]="['/admin/products/', p.$key]">Edit</a>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<ngx-datatable class="bootstrap" [rows]="rows" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50" [rowHeight]="'auto'"
+  [limit]="10">
+  <ngx-datatable-column name="Title">
+    <ng-template let-value="value" ngx-datatable-cell-template>
+      {{value}}
+    </ng-template>
+  </ngx-datatable-column>
+
+  <ngx-datatable-column name="Price">
+    <ng-template let-value="value" ngx-datatable-cell-template>
+      {{value | currency: 'CAD': true}}
+    </ng-template>
+  </ngx-datatable-column>
+
+  <ngx-datatable-column>
+    <ng-template ngx-datatable-cell-template let-row="row">
+        <a [routerLink]="['/admin/products/', row.$key]">Edit</a>
+    </ng-template>
+  </ngx-datatable-column>
+
+
+</ngx-datatable>
+
+

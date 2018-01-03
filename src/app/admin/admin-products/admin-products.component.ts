@@ -1,3 +1,4 @@
+import { ProductFormComponent } from './../product-form/product-form.component';
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../product.service';
 import { Observable } from 'rxjs/Observable';
@@ -12,22 +13,23 @@ import { Product } from '../../models/product';
 })
 export class AdminProductsComponent implements OnInit, OnDestroy {
   products: Product[];
-  filteredProducts: any[];
   subscription: Subscription;
+  rows: Product[] = [];
 
   constructor(private productService: ProductService) { 
     this.subscription = this.productService.getAll()
     .subscribe(
       products => {
-        this.filteredProducts = this.products = products;
+        this.products = products;
+        this.rows = products;
       });
   }
 
-
   filter(query: string) {
-    this.filteredProducts = (query) ? 
+    let filteredProducts = (query) ? 
       this.products.filter(p => p.title.toLowerCase().includes(query.toLowerCase())): 
       this.products;
+    this.rows = filteredProducts;
   }
 
   ngOnInit() {

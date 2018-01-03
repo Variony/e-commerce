@@ -1,3 +1,44 @@
-<p>
-  products works!
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="list-group sticky-top">
+          <a 
+          routerLink="/" 
+          class="list-group-item list-group-item-action"
+          [class.active]="!category"
+          >
+            All 
+          </a>
+          <a 
+          routerLink="/" 
+          [queryParams]="{ category: c.$key }" 
+          class="list-group-item list-group-item-action" 
+          *ngFor="let c of categories"
+          [class.active]="category === c.$key">
+            {{ c.name }}
+          </a>
+      </div>
+      
+    </div>
+    <div class="col-md-9">
+
+      <div class="row">
+        <ng-container *ngFor="let p of filteredProduct; let i = index;">
+          <div class="col">
+            <div class="card" style="width: 18rem;">
+              <img class="card-img-top" [src]="p.imageUrl" [alt]="p.title">
+              <div class="card-body">
+                <h5 class="card-title">{{ p.title }}</h5>
+                <p class="card-text">{{ p.price | currency: USD: true }}</p>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="(i + 1) % 2 === 0" class="w-100 mb-1"></div>
+        </ng-container>
+      </div>
+
+
+
+    </div>
+  </div>
+</div>
