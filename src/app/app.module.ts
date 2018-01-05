@@ -1,3 +1,4 @@
+import { ShoppingCartService } from './shopping-cart.service';
 import { ProductService } from './product.service';
 import { UserService } from './user.service';
 import { LoginComponent } from './login/login.component';
@@ -28,6 +29,9 @@ import { AdminAuthGuard } from './admin-auth-guard.service';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
 import { CategoryService } from './category.service';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { ProductFilterComponent } from './product-filter/product-filter.component';
+import { ProductCardComponent } from './product-card/product-card.component';
+import { ProductQuantityComponent } from './product-quantity/product-quantity.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +46,10 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
     AdminProductsComponent,
     AdminOrdersComponent,
     LoginComponent,
-    ProductFormComponent
+    ProductFormComponent,
+    ProductFilterComponent,
+    ProductCardComponent,
+    ProductQuantityComponent
   ],
   imports: [
     BrowserModule,
@@ -76,7 +83,8 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
     UserService,
     AdminAuthGuard,
     CategoryService,
-    ProductService
+    ProductService,
+    ShoppingCartService
   ],
   bootstrap: [AppComponent]
 })
