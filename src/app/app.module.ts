@@ -8,9 +8,9 @@ import { environment } from '../environments/environment';
 import { AdminModule } from './admin/admin.module';
 import { AdminAuthGuard } from './admin/services/admin-auth-guard.service';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './core/login/login.component';
+import { LoginComponent } from './core/components/login/login.component';
 import { SharedModule } from './shared/shared.module';
-import { ProductsComponent } from './shopping/products/products.component';
+import { ProductsComponent } from './shopping/components/products/products.component';
 import { ShoppingModule } from './shopping/shopping.module';
 
 @NgModule({
