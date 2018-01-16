@@ -1,0 +1,41 @@
+<nav class="navbar navbar-light bg-light navbar-expand-lg mb-3">
+  <div class="container">
+    <div class="col">
+      <div class="row">
+        <a class="navbar-brand" routerLink="/">
+          <i class="fa fa-envira text-success" aria-hidden="true"></i>
+        </a>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a routerLink="/shopping-cart" class="nav-link">
+              Shopping Cart
+              <span class="badge badge-warning badge-pill" *ngIf="cart$ | async as cart">{{ cart.totalItemsCount }}</span>
+            </a>
+          </li>
+
+          <ng-template #anonymousUser>
+            <li class="nav-item">
+              <a routerLink="/login" class="nav-link">Log in</a>
+            </li>
+          </ng-template>
+
+          <li class="nav-item dropdown" ngbDropdown *ngIf="appUser; else anonymousUser">
+            <a class="nav-link dropdown-toggle" ngbDropdownToggle id="dropdownBasic1">
+              {{ appUser.name }}
+            </a>
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="dropdown-menu">
+              <a class="dropdown-item" routerLink="/my/orders">My Orders</a>
+              <ng-container *ngIf="appUser.isAdmin">
+                  <a class="dropdown-item" routerLink="/admin/orders">Manage Orders</a>
+                  <a class="dropdown-item" routerLink="/admin/products">Manage Products</a>
+              </ng-container>
+
+              
+              <a class="dropdown-item" (click)="logout()">Log Out</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
